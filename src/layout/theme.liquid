@@ -1,0 +1,20 @@
+<!doctype html>
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}" data-shop="{{ shop.permanent_domain | replace: '.myshopify.com', '' }}">
+    <head>
+      {% include 'head' %}
+      {{ content_for_header }}
+    </head>
+
+    <body class="layout layout--{{ template | handleize }}">
+      {% section 'global-header' %}
+
+      <main id="content-for-layout" class="template template--{{ template | handleize }}">
+        {{ content_for_layout }}
+      </main>
+
+
+      {% section 'global-footer' %}
+      {% include 'json-ld' %}
+      {% include 'scripts' %}
+    </body>
+</html>

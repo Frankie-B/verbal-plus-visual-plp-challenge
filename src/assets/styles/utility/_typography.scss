@@ -1,0 +1,282 @@
+html {
+  font-family: $type--body;
+  font-size: $type--base--mbl;
+  color: $color--type;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media screen and (min-width: $break--tblt) {
+    font-size: $type--base--tblt;
+  }
+
+  @media screen and (min-width: $break--dsktp) {
+    font-size: $type--base--dsktp;
+  }
+}
+
+// TO DO: Rework fontsize to fully use BEM
+
+.type,
+%type {
+  &--cta {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.714285714285714;
+    letter-spacing: normal;
+  }
+
+  &--xxxl {
+    font-family: $type--display;
+    font-size: 3.052rem;
+    font-weight: 700;
+    line-height: 1.187;
+    letter-spacing: -0.32px;
+
+    @media screen and (min-width: $break--tblt) {
+      font-size: 7.625rem;
+      letter-spacing: -0.8px;
+    }
+
+    @media screen and (min-width: $break--dsktp) {
+      font-size: 9.4925rem;
+      line-height: 1.198;
+      letter-spacing: -1px;
+    }
+  }
+
+  &--xxl {
+    font-family: $type--body;
+    font-size: 2.441rem;
+    font-weight: 700;
+    line-height: 1.33;
+    letter-spacing: normal;
+
+    @media screen and (min-width: $break--tblt) {
+      font-size: 5.0625rem;
+    }
+
+    @media screen and (min-width: $break--dsktp) {
+      font-size: 6.32875rem;
+      line-height: 1.32;
+    }
+  }
+
+  &--xl {
+    font-family: $type--body;
+    font-size: 1.953rem;
+    font-weight: 700;
+    line-height: 1.31;
+    letter-spacing: normal;
+
+    @media screen and (min-width: $break--tblt) {
+      font-size: 3.375rem;
+    }
+
+    @media screen and (min-width: $break--dsktp) {
+      font-size: 4.21875rem;
+      line-height: 1.33;
+    }
+  }
+
+  &--l {
+    font-family: $type--body;
+    font-size: 1.563rem;
+    font-weight: 700;
+    line-height: 1.33;
+    letter-spacing: normal;
+
+    @media screen and (min-width: $break--tblt) {
+      font-size: 2.25rem;
+    }
+
+    @media screen and (min-width: $break--dsktp) {
+      font-size: 2.8125rem;
+    }
+  }
+
+  &--m {
+    font-family: $type--body;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: normal;
+
+    @media screen and (min-width: $break--tblt) {
+      font-size: 1.5rem;
+    }
+
+    @media screen and (min-width: $break--dsktp) {
+      font-size: 1.875rem;
+      line-height: 1.33;
+    }
+  }
+
+  &--p {
+    font-family: $type--body;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.31;
+    letter-spacing: normal;
+  }
+
+  &--s {
+    font-family: $type--body;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.33;
+    letter-spacing: normal;
+
+    @media screen and (min-width: $break--tblt) {
+      font-size: 0.6875rem;
+    }
+    
+    @media screen and (min-width: $break--dsktp) {
+      font-size: 0.83375rem;
+      line-height: 1.274;
+    }
+  }
+
+  &--xs {
+    font-family: $type--body;
+    font-size: 0.64rem;
+    font-weight: 700;
+    line-height: 1.27;
+    letter-spacing: normal;
+
+    @media screen and (min-width: $break--tblt) {
+      font-size: 0.625rem;
+    }
+
+    @media screen and (min-width: $break--dsktp) {
+      font-size: 0.55rem;
+      line-height: 1.35;
+    }
+  }
+
+  &--button {
+    font-family: $type--body;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: normal;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  // TO DO: copy of button, needs editing
+
+  &--input {
+    font-family: $type--body;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: normal;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+h1 {
+  @extend %type--xxl;
+}
+
+h2 {
+  @extend %type--xl;
+}
+
+h3 {
+  @extend %type--l;
+}
+
+h4 {
+  @extend %type--m;
+}
+
+p {
+  @extend %type--p;
+}
+
+a {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+b,
+strong,
+.b {
+  font-weight: 700;
+}
+
+.semi-b {
+  font-weight: 600;
+}
+
+.extra-b {
+  font-weight: 900;
+}
+
+.no-b {
+  font-weight: 400;
+}
+
+.tight {
+  line-height: 1.067;
+}
+
+i,
+em,
+.i {
+  font-style: italic;
+}
+
+.no-i {
+  font-style: normal;
+}
+
+u,
+.u {
+  text-decoration: underline;
+}
+
+.no-u {
+  text-decoration: none;
+}
+
+.no-l,
+.no-list {
+  list-style: none;
+}
+
+s,
+.s {
+  text-decoration: line-through;
+}
+
+.font {
+  &--display {
+    font-family: $type--display;
+  }
+
+  &--body {
+    font-family: $type--body;
+  }
+
+  &--alt {
+    font-family: $type--alt;
+  }
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}

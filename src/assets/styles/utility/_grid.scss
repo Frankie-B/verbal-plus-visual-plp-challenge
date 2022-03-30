@@ -1,0 +1,243 @@
+.container {
+  &--l {
+    max-width: $width--l;
+    margin: 0 auto;
+  }
+
+  &--m {
+    max-width: $width--m;
+    margin: 0 auto;
+  }
+
+  &--s {
+    max-width: $width--s;
+    margin: 0 auto;
+  }
+}
+
+@mixin width($width) {
+  width: ($width / $number-of-columns) * 100%;
+}
+
+@mixin offset-width($width) {
+  margin-left: ($width / $number-of-columns) * 100%;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: $gutter--mbl;
+  padding-left: $gutter--mbl;
+  box-sizing: border-box;
+
+  @media screen and (min-width: $break--tblt) {
+    padding-right: $gutter--tblt;
+    padding-left: $gutter--tblt;
+  }
+
+  @media screen and (min-width: $break--dsktp) {
+    padding-right: $gutter--dsktp;
+    padding-left: $gutter--dsktp;
+  }
+
+  &--mbl {
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: $gutter--mbl;
+    padding-left: $gutter--mbl;
+    box-sizing: border-box;
+
+    @media screen and (min-width: $break--tblt) {
+      display: block;
+      padding-right: $gutter--tblt;
+      padding-left: $gutter--tblt;
+    }
+
+    @media screen and (min-width: $break--dsktp) {
+      padding-right: $gutter--dsktp;
+      padding-left: $gutter--dsktp;
+    }
+  }
+
+  &--tblt {
+    display: block;
+    padding-right: $gutter--mbl;
+    padding-left: $gutter--mbl;
+    box-sizing: border-box;
+
+    @media screen and (min-width: $break--tblt) {
+      display: flex;
+      flex-wrap: wrap;
+      padding-right: $gutter--tblt;
+      padding-left: $gutter--tblt;
+    }
+
+    @media screen and (min-width: $break--dsktp) {
+      padding-right: $gutter--dsktp;
+      padding-left: $gutter--dsktp;
+    }
+  }
+
+  &--dsktp {
+    @media screen and (min-width: $break--dsktp) {
+      padding-right: $gutter--dsktp;
+      padding-left: $gutter--dsktp;
+      display: flex;
+      flex-wrap: wrap;
+    }
+}
+
+  &--align-start {
+    align-items: flex-start;
+  }
+
+  &--align-end {
+    align-items: flex-end;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &--flush {
+    padding-right: 0;
+    padding-left: 0;
+
+    & > [class^="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  &--no-padding {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  &--justify-around {
+    justify-content: space-around;
+  }
+
+  &--justify-between {
+    justify-content: space-between;
+  }
+
+  &--justify-center {
+    justify-content: center;
+  }
+
+  &--justify-start {
+    justify-content: flex-start;
+  }
+
+  &--justify-end {
+    justify-content: flex-end;
+  }
+
+  &--direction-column {
+    flex-direction: column;
+  }
+
+  &--direction-reverse {
+    flex-direction: row-reverse;
+  }
+
+  &--no-wrap {
+    flex-wrap: nowrap;
+  }
+}
+
+// Base class
+.col {
+  width: 100%;
+  padding-right: $gutter--mbl;
+  padding-left: $gutter--mbl;
+  box-sizing: border-box;
+
+  @media screen and (min-width: $break--tblt) {
+    padding-right: $gutter--tblt;
+    padding-left: $gutter--tblt;
+  }
+
+  @media screen and (min-width: $break--dsktp) {
+    padding-right: $gutter--dsktp;
+    padding-left: $gutter--dsktp;
+  }
+
+  &--width-auto {
+    width: auto;
+  }
+
+  &--align-start {
+    align-self: flex-start;
+  }
+
+  &--align-end {
+    align-self: flex-end;
+  }
+
+  &--align-center {
+    align-self: center;
+  }
+
+  &--no-padding {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  &> .flex {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// Generate classes based on grid variable
+@for $i from 1 through $number-of-columns {
+  .col--#{$i} {
+    @include width($i);
+  }
+
+  .offset--#{$i} {
+    @include offset-width($i);
+  }
+}
+
+// mbl
+@media screen and (min-width: $break--mbl) {
+  @for $i from 1 through $number-of-columns {
+    .col--#{$i}--mbl {
+      @include width($i);
+    }
+
+    .offset--#{$i}--mbl {
+      @include offset-width($i);
+    }
+  }
+}
+
+// tblt
+@media screen and (min-width: $break--tblt) {
+  @for $i from 1 through $number-of-columns {
+    .col--#{$i}--tblt {
+      @include width($i);
+    }
+
+    .offset--#{$i}--tblt {
+      @include offset-width($i);
+    }
+  }
+}
+
+// dsktp
+@media screen and (min-width: $break--dsktp) {
+  @for $i from 1 through $number-of-columns {
+    .col--#{$i}--dsktp {
+      @include width($i);
+    }
+
+    // base offsets
+    .offset--#{$i}--dsktp {
+      @include offset-width($i);
+    }
+  }
+}

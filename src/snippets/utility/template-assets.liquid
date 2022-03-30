@@ -1,0 +1,22 @@
+{% if template contains 'customers' or template contains 'addresses' or  template contains 'password' %}
+  {% assign fileName = "account" %}
+{% elsif template contains 'page' %}
+  {% case template %}
+    {% when blank %}
+      {% assign fileName = "page" %}
+    {% else %}
+      {% assign fileName = template | handleize %}
+    {% endcase %}
+{% else %}
+  {% assign fileName = template | handleize %}
+{% endif %}
+{% if fileName == blank %}
+  {% assign fileName = "page" %}
+{% endif %}
+
+
+{% if type == "script" %}
+    <script src="{{ fileName | append: '.bundle.js' | asset_url }}" defer></script>
+{% elsif type == "style" %}
+    <link rel="stylesheet" type="text/css" href="{{ fileName | append: '.scss' | asset_url }}" defer>
+{% endif %}

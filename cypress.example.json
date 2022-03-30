@@ -1,0 +1,8 @@
+{
+  "env": {
+    "STORE_URL": "https://xx.myshopify.com/",
+    "STORE_PW": "xx",
+    "THEME_ID": "xx",
+    "PRODUCT_HANDLES": ["product-1", "product-2", "product-3", "product-4", "product-5"],
+  }
+}

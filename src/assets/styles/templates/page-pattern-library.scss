@@ -1,0 +1,13 @@
+ .page-pattern-library {
+  &__color-swatch {
+    width: 20%;
+    padding-top: 20%;
+    border-radius: 50%;
+
+    &--sm {
+      width: calc(100%/7);
+      padding-top: calc(100%/7);
+      border-radius: 50%;
+    }
+  }
+}

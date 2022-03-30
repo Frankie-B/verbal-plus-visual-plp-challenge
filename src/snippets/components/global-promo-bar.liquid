@@ -1,0 +1,15 @@
+{% unless section.settings.promo_bar_hide %}
+<a href="{{ section.settings.promo_bar_url }}"
+   id="promo"
+   class="global-promo no-u">
+  <div class="global-promo__wrap text-align--center" style="background-color: {{section.settings.promo_bar_bg_color}}; color: {{section.settings.promo_bar_text_color}}">
+    <div class="global-promo__text type--xs">
+      {% if section.settings.promo_bar_url %}
+        {{ section.settings.promo_bar_text }}
+      {% else %}
+        <p>{{ section.settings.promo_bar_text }}</p>
+      {% endif %}
+    </div>
+  </div>
+</a>
+{% endunless %}

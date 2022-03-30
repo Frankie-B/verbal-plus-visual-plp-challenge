@@ -1,0 +1,10 @@
+theme:
+  password: FROM_SHOPIFY_EMAIL
+  theme_id: "FROM_VPV_EMAIL"
+  store: vpv-code-challenge.myshopify.com
+  ignore_files:
+    - settings_data.json
+    - src
+    - node_modules
+    - package.json
+    - package-lock.json

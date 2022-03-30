@@ -1,0 +1,42 @@
+<!-- /templates/page.contact.liquid -->
+{% form 'contact', class: "auth-form container--s text-align--center" %}
+<div class="auth-form__wrap gutters">
+    <h1 class="auth-form__header type--l">{{ page.title }}</h1>
+    {% comment %}
+    Successful message
+    {% endcomment %}
+    {% if form.posted_successfully? %}
+    <p class="note form-success margin-bottom--20">
+        {{ 'contact.form.post_success' | t }}
+    </p>
+    {% endif %}
+
+    {{ form.errors | default_errors }}
+
+    <span class="text-input bg--black--5">
+        <label for="ContactFormName" class="auth-form--label text-input__label no-icon">{{ 'contact.form.name' | t }}</label>
+        <input type="text" id="ContactFormName" class="auth-form--input text-input__input no-icon" name="contact[name]" autocorrect="off" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" required>    
+    </span>
+
+     <span class="text-input auth-form__margin bg--black--5">
+        <span class="text-input__icon">{% render 'svg', name: 'email' %}</span>    
+        <label for="ContactFormEmail" class="auth-form--label text-input__label">{{ 'contact.form.email' | t }}</label>
+        <input type="email" id="ContactFormEmail" class="auth-form--input text-input__input" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required>  
+    </span>
+
+    <span class="text-input auth-form__margin bg--black--5">
+        <label for="ContactFormPhone" class="auth-form--label text-input__label no-icon">{{ 'contact.form.phone' | t }}</label>
+        <input type="tel" id="ContactFormPhone" class="auth-form--input text-input__input no-icon" name="contact[phone]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+    </span>
+
+
+    <span class="text-input auth-form__margin bg--black--5">
+        <label for="ContactFormMessage" class="auth-form--label text-input__label no-icon">{{ 'contact.form.message' | t }}</label>
+        <textarea rows="10" id="ContactFormMessage" class="auth-form--input text-input__input no-icon" name="contact[body]" required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
+    </span>
+
+
+    <button type="submit" class="button-max clickable--contained clickable--contained--primary color--white margin-top--20" >Submit</button>
+</div>
+{% endform %}
+         

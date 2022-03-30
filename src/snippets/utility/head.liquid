@@ -1,0 +1,53 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="canonical" href="{{ canonical_url }}">
+
+<!-- Stylesheets -->
+<!-- <link rel="stylesheet" type="text/css" href="{{ 'vendors.scss' | asset_url }}"> -->
+<link rel="stylesheet" type="text/css" href="{{ 'theme.scss' | asset_url }}">
+{% render 'template-assets', type: "style", template: template %}
+<!-- END Stylesheets -->
+
+{% capture seo_title %}
+	{{ page_title }}
+	{% if current_tags %}
+			{%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+	{% endif %}
+	{% if current_page != 1 %}
+			&ndash; {{ 'general.meta.page' | t: page: current_page }}
+	{% endif %}
+	{% unless page_title contains shop.name %}
+			&ndash; {{ shop.name }}
+	{% endunless %}
+{% endcapture %}
+
+<title>{{ seo_title }}</title>
+
+{% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+{% endif %}
+<meta name="copyright" content="{{ shop.name }} {{ 'now' | date: '%Y' }}">
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32x32.png' | asset_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon-16x16.png' | asset_url }}">
+<link rel="manifest" href="{{ 'site.webmanifest' | asset_url }}">
+<meta name="msapplication-TileColor" content="#6849e3">
+<meta name="theme-color" content="#6849e3">
+<!-- END Favicon -->
+
+<!-- Social Meta Tags -->
+{% include 'social-meta-tags' %}
+<!-- END Social Meta Tags -->
+
+<!-- Stylesheets -->
+<!-- <link rel="stylesheet" type="text/css" href="{{ 'vendors.scss' | asset_url }}"> -->
+<link rel="stylesheet" type="text/css" href="{{ 'theme.scss' | asset_url }}">
+<link rel="stylesheet" type="text/css" href="{{ template | handleize | append: '.scss' | asset_url }}">
+<!-- END Stylesheets -->
+
+<script>
+  const _themeSectionData = {};
+</script>

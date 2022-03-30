@@ -1,0 +1,238 @@
+{% assign global_header_linklist = linklists[section.settings.global_header] %}
+
+<header class="global-header">
+  {% render 'global-promo-bar' %}
+  <!-- HEADER-->
+  <nav class="global-header__wrap position--relative bg--white flex flex--justify-between flex--align-center">
+    <div class="global-header__open hidden--dsktp col--3--mbl">
+      {% render 'svg', name: 'burger' %}
+    </div>
+
+    <a href="/" class="global-header__logo display--block padding-none col--6--mbl col--4--dsktp flex">
+    </a>
+
+      <div class="global-header__menu padding-none col--2--mbl col--4--dsktp">
+        <ul class="list--no-style display--flex">
+          {% for link in global_header_linklist.links %}
+            <!-- First Level Links-->
+            <li class="b gutters">
+              <a class="no-u type--p global-header__menu-parent" href="{{ link.url }}">
+                <span class="display--inline-block">{{ link.title }}</span>
+              </a>
+
+              <!-- Second Level Links -->
+              {% if link.links != blank %}
+                <div class="global-header__menu-mega display--none">
+                  <ul class="global-header__child position--absolute">
+                    <div class="global-header__child-inner container--l flex flex--justify-center bg--white gutters list--no-style padding-both--l">
+                        {% for child_link in link.links %}
+                          {% if child_link.type == "page_link" or child_link.type == "collection_link" %}
+                              {% for block in section.blocks %}
+                                {% case block.type %}
+
+                                  {% when 'collectionimage' %}
+                                    {% if block.settings.collection == child_link.object.handle %}
+                                      {% assign image = block.settings.image %}
+                                      {% break %}
+                                    {% endif %}
+
+
+                                  {% when 'pageimage' %}
+                                    {% if block.settings.page == child_link.object.handle %}
+                                        {% assign image = block.settings.image %}
+                                        {% break %}
+                                    {% endif %}
+                                {% endcase %}
+                              {% endfor %}
+                              {% assign title = child_link.title %}
+                            {% endif %}
+
+                          <li class="gutters--half no-b type--button capitalize col--2--dsktp  {% unless image == blank %}image-link{% endunless %}">
+                            {% if image == blank %}
+                              <a class="no-u type--s" href= "{{ child_link.url }}">{{ child_link.title }}</a>
+
+                                <!-- Third Level Links -->
+                              {% if child_link.links != blank %}
+                                <ul class="global-header__grandchild-linklist list--no-style">
+                                {% for grandchild_link in child_link.links %}
+                                  <li>
+                                    <a class="no-u type--button capitalize" href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                                  </li>
+                                {% endfor %}
+                                </ul>
+                              {% endif %}
+                            {% else %}
+                              <a href="{{ child_link.url }}" class="no-u type--s">
+                                <div>
+                                  <img class="lazyload content" src="{{ image | img_url: '200x' }}" alt="{{ image.alt }}"/>
+                                </div>
+                                <div>
+                                  <p class="type--button capitalize">{{ title }}</p>
+                                  {% unless subtitle == blank %}
+                                    <p class="type--button capitalize">{{ subtitle }}</p>
+                                  {% endunless %}
+                                </div>
+                              </a>
+                            {% endif %}
+                            {% assign image = blank %}
+                            {% assign split_title = blank %}
+                            {% assign title = blank %}
+                            {% assign subtitle = blank %}
+                          </li>
+                        {% endfor %}
+                    </div>
+                  </ul>
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="global-header__right flex flex--align-center flex--justify-end padding-none col--3--mbl col--4--dsktp">
+
+        <div class="global-header__search show-only--dsktp header-right-item">
+          <div class="global-header__search-wrap display--none">
+            <form class="global-header__search-container__form autocomplete-search-form flex padding-none" action="{{ routes.search_url }}" method="get" autocomplete="off">
+              <input
+                class="global-header__search-input"
+                type="text"
+                placeholder="Search"
+                name="q"
+                @keyup="fetchAutocomplete"
+                v-model="inputQuery"/>
+              <button class="global-header__right-icon clickable--icon" type="submit">
+                {% render 'svg', name: 'search' %}
+              </button>
+              <div v-if="this.products.length > 1 && drawerVisible" class="global-header__search-container__autocomplete-wrapper__close" @click="hideDrawer"></div>
+                <div class="global-header__search-container__autocomplete-wrapper" :class="{'visible': this.products.length > 1 && drawerVisible}">
+                  <div class="gutters--half">
+                    <div class="global-header__dsktp-nav__nav-option__drawer__links-wrapper__link-section__subheader type--xxs type--bold">
+                      Products
+                    </div>
+                    <ul class="list list--no-style global-cart__drawer__item-list flex flex--flush flex--direction-column flex--no-wrap">
+                      <li class="item flex flex--no-padding flex--no-wrap padding-both--s"
+                        v-for="item in products"
+                        :key="item.id">
+                        <div class="item__image-wrap">
+                            <a :href="item.url">
+                                <img v-if="item.image" class="lazyload" :data-src="item.image" :alt="item.title">
+                            </a>
+                        </div>
+                        <div class="item__info-wrap flex flex--direction-column flex--no-padding gutter--left">
+                            <a class="type--s b no-u title" :href="item.url">${ item.title }</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <p class="margin-top--s margin-bottom--s"><a class="type--p cta-underline cta-underline--primary--dark" :href="`/search?q=${this.suggestedTerm}`">View All Results</a></p>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <button class="global-header__right-icon search-icon mbl-drawer__icon clickable--icon">
+              {% render 'svg', name: 'search' %}
+            </button>
+          </div>
+
+          <a href="/account/register" class="global-header__right-icon mbl-drawer__icon header-right-item clickable--icon">
+            {% render 'svg', name: 'heart' %}
+          </a>
+
+          <button class="global-header__cart global-header__right-icon cart-toggle header-right-item clickable--icon">
+            {% render 'svg', name: 'cart' %}
+          </button>
+      </div>
+    </nav>
+  </header>
+
+{%render 'mobile-drawer'%}
+
+{% schema %}
+{
+  "name": "Global Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Promo Bar"
+    },
+    {
+        "type": "checkbox",
+        "id": "promo_bar_hide",
+        "label": "Promo Bar Hide",
+        "default": false
+    },
+    {
+        "type": "color",
+        "id": "promo_bar_bg_color",
+        "label": "Promo Bar Background Color",
+        "default": "#6849E3"
+    },
+    {
+        "type": "color",
+        "id": "promo_bar_text_color",
+        "label": "Promo Bar Text Color",
+        "default": "#FFF"
+    },
+    {
+      "type": "text",
+      "id": "promo_bar_text",
+      "label": "Message"
+    },
+    {
+      "type": "url",
+      "id": "promo_bar_url",
+      "label": "Link 1"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "global_header",
+      "label": "Linklist "
+    },
+    {
+       "type": "image_picker",
+       "id": "global-header-logo",
+       "label": "Logo"
+    }
+  ],
+  "blocks": [
+    {
+        "name": "Collection Image",
+        "type": "collectionimage",
+        "settings": [
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection",
+            "info": "Collection associated with image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+        ]
+    },
+    {
+        "name": "Page Image",
+        "type": "pageimage",
+        "settings": [
+        {
+            "type": "page",
+            "id": "page",
+            "label": "Page",
+            "info": "Page associated with image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+        ]
+    }
+  ]
+}
+{% endschema %}

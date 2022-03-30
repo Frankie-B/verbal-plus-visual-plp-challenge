@@ -1,0 +1,167 @@
+/*==== Grid ===*/
+
+// Gutter size
+$gutter--mbl: 20px;
+$gutter--tblt: 20px;
+$gutter--dsktp: 20px;
+
+$gutter--mbl--half: calc(#{$gutter--mbl} * 0.5);
+$gutter--tblt--half: calc(#{$gutter--tblt} * 0.5);
+$gutter--dsktp--half: calc(#{$gutter--dsktp} * 0.5);
+
+// Grid size
+$number-of-columns: 12;
+
+// Breakpoints
+$break--mbl: 320px;
+$break--tblt: 768px;
+$break--dsktp: 1024px;
+
+// Container Widths
+$width--s: 480px;
+$width--m: 872px;
+$width--l: 1200px;
+
+/*==== Colors ===*/
+$color--white: #FFFFFF;
+$color--black: #000000;
+$color--transparent: rgba(0, 0, 0, 0);
+
+$color--black--5: rgba($color--black, 0.05);
+$color--black--10: rgba($color--black, 0.1);
+$color--black--20: rgba($color--black, 0.2);
+$color--black--50: rgba($color--black, 0.5);
+$color--black--80: rgba($color--black, 0.8);
+
+$color--black--03: #B8B8B9;
+$color--black--03--50: rgba($color--black--03, 0.5); // Transparent Grey for disbaled states and hover can be used over both black and white.
+$color--black--50: rgba($color--black, 0.5); // Transparent Black for body overlays under modals and drawers.
+$color--black--03--10: rgba($color--black--03, 0.1);
+
+$color--white--5: rgba($color--white, 0.05);
+$color--white--10: rgba($color--white, 0.1);
+$color--white--20: rgba($color--white, 0.2);
+$color--white--50: rgba($color--white, 0.5);
+$color--white--80: rgba($color--white, 0.8);
+
+$color--primary: #6849E3;
+$color--secondary: #49D2E3;
+
+$color--primary--10: rgba($color--primary, 0.1);
+$color--primary--20: rgba($color--primary, 0.2);
+$color--primary--50: rgba($color--primary, 0.5);
+$color--primary--80: rgba($color--primary, 0.8);
+
+$color--primary--lightest: #E0DAF9;
+$color--primary--lighter: #B3A4F1;
+$color--primary--light: #866DE8;
+$color--primary--dark: #5D41CC;
+$color--primary--darker: #533AB5;
+$color--primary--darkest: #3E2B88;
+
+$color--secondary--10: rgba($color--secondary, 0.1);
+$color--secondary--20: rgba($color--secondary, 0.2);
+$color--secondary--50: rgba($color--secondary, 0.5);
+$color--secondary--80: rgba($color--secondary, 0.8);
+
+$color--secondary--lightest: #DAF6F9;
+$color--secondary--lighter: #A4E8F1;
+$color--secondary--light: #6DDBE8;
+$color--secondary--dark: #41BCCB;
+$color--secondary--darker: #3AA8B5;
+$color--secondary--darkest: #2B7E88;
+
+$color--error: #E35A49;
+$color--error--50: rgba($color--error, 0.5);
+$color--success: #65CD7F;
+$color--success--50: rgba($color--success, 0.5);
+$color--focus: #49D2E3;
+$color--focus--50: rgba($color--focus, 0.5);
+
+$color--type: #222222;
+
+$color--test-red: rgba(255, 0, 0, 0.5);
+$color--test-orange: rgba(255, 128, 0, 0.5);
+$color--test-yellow: rgba(255, 255, 0, 0.5);
+$color--test-green: rgba(128, 255, 0, 0.5);
+$color--test-blue: rgba(0, 128, 255, 0.5);
+$color--test-purple: rgba(128, 0, 255, 0.5);
+$color--test-pink: rgba(255, 128, 255, 0.1);
+
+
+/*==== Typestyles ====*/
+$type--base--mbl: 16px;
+$type--base--tblt: 16px;
+$type--base--dsktp: 16px;
+
+$type-stack--sans: (Helvetica, Arial, sans-serif);
+$type-stack--serif: (Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", TimesNewRoman, "Times New Roman", serif);
+$type-stack--mono: ("Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace);
+
+$type--display: ("Apercu", $type-stack--sans);
+$type--body: ("Maison Neue", $type-stack--sans);
+$type--alt: ("Maison Neue", $type-stack--sans);
+
+/*==== Spacing ====*/
+$space--base--mbl: 0.625rem; // 10px
+$space--base--tblt: 0.8rem; // 16px
+$space--base--dsktp: 1rem; // 20px
+
+$space--xxxxl--mbl: calc(#{$space--base--mbl} * 8.59375);
+$space--xxxl--mbl: calc(#{$space--base--mbl} * 5.3125);
+$space--xxl--mbl: calc(#{$space--base--mbl} * 3.28125);
+$space--xl--mbl: calc(#{$space--base--mbl} * 2.03125);
+$space--l--mbl: calc(#{$space--base--mbl} * 1.25);
+$space--m--mbl: calc(#{$space--base--mbl} * 0.78125);
+$space--s--mbl: calc(#{$space--base--mbl} * 0.46875);
+$space--xs--mbl: calc(#{$space--base--mbl} * 0.3125);
+$space--xxs--mbl: calc(#{$space--base--mbl} * 0.234375);
+$space--xxxs--mbl: calc(#{$space--base--mbl} * 0.15625);
+$space--xxxxs--mbl: calc(#{$space--base--mbl} * 0.078125);
+
+$space--xxxxl--tblt: calc(#{$space--base--tblt} * 13.75);
+$space--xxxl--tblt: calc(#{$space--base--tblt} * 8.5);
+$space--xxl--tblt: calc(#{$space--base--tblt} * 5.2);
+$space--xl--tblt: calc(#{$space--base--tblt} * 3.25);
+$space--l--tblt: calc(#{$space--base--tblt} * 2);
+$space--m--tblt: calc(#{$space--base--tblt} * 1.25);
+$space--s--tblt: calc(#{$space--base--tblt} * 0.75);
+$space--xs--tblt: calc(#{$space--base--tblt} * 0.5);
+$space--xxs--tblt: calc(#{$space--base--tblt} * 0.375);
+$space--xxxs--tblt: calc(#{$space--base--tblt} * 0.25);
+$space--xxxxs--tblt: calc(#{$space--base--tblt} * 0.125);
+
+$space--xxxxl--dsktp: calc(#{$space--base--dsktp} * 17.1875);
+$space--xxxl--dsktp: calc(#{$space--base--dsktp} * 10.625);
+$space--xxl--dsktp: calc(#{$space--base--dsktp} * 6.5625);
+$space--xl--dsktp: calc(#{$space--base--dsktp} * 4.0625);
+$space--l--dsktp: calc(#{$space--base--dsktp} * 2.5);
+$space--m--dsktp: calc(#{$space--base--dsktp} * 1.5625);
+$space--s--dsktp: calc(#{$space--base--dsktp} * 0.9375);
+$space--xs--dsktp: calc(#{$space--base--dsktp} * 0.625);
+$space--xxs--dsktp: calc(#{$space--base--dsktp} * 0.46875);
+$space--xxxs--dsktp: calc(#{$space--base--dsktp} * 0.3125);
+$space--xxxxs--dsktp: calc(#{$space--base--dsktp} * 0.125);
+
+$space--utility--5: 5px;
+$space--utility--10: 10px;
+$space--utility--15: 15px;
+$space--utility--20: 20px;
+$space--utility--25: 25px;
+$space--utility--30: 30px;
+$space--utility--35: 35px;
+$space--utility--40: 40px;
+$space--utility--45: 45px;
+$space--utility--50: 50px;
+$space--utility--75: 75px;
+$space--utility--100: 100px;
+
+/*==== Transitions ====*/
+$bezier: cubic-bezier(0.23, 1, 0.32, 1); // easeOutQuint
+$timing: 0.4s;
+$timing--quick: 0.2s;
+$timing--slow: 0.4s;
+$base-transition: $timing $bezier;
+$base-transition--delay: $timing $bezier $timing;
+$base-transition--quick: $timing--quick $bezier;
+$base-transition--slow: $timing--slow $bezier;

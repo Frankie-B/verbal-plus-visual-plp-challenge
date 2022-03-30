@@ -1,0 +1,28 @@
+{% layout 'gift_card' %}
+<div>
+	<header>
+		<h2>
+			Here's your gift card!
+		</h2>
+		<p>
+			Use the code on the card at checkout to redeem your available balance.
+		</p>
+	</header>
+	<div>
+		<h3>
+			{{ gift_card.balance | money }}
+		</h3>
+		<p>
+			code: {{gift_card.code}}
+		</p>
+	</div>
+	<p>
+		You can also scan for the code
+	</p>
+	<div id="qr-code"></div>
+	{% if gift_card.pass_url %}
+		<a href="{{ gift_card.pass_url }}">
+			<img id="apple-wallet-badge" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Add To Apple Wallet">
+		</a>
+	{% endif %}
+</div>

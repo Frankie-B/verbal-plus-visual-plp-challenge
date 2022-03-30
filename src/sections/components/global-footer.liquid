@@ -1,0 +1,198 @@
+
+{%- assign primaryMenu = section.settings.primary-menu -%}
+{%- assign subMenu = section.settings.sub-menu -%}
+
+<!-- Footer Value Props -->
+<section class="global-value-props">
+    <div class="global-value-props__wrapper flex--tblt text-align--center bg--white--80 color--black">
+       
+        <div class="global-value-props__prop col--12--mob col--3--tblt">
+            <div class="global-value-props__prop__image col--1--mbl col--12--tblt">
+                {% render 'svg', name: 'heart' %}
+            </div>
+            <div class="global-value-props__prop__header">Value Proposition</div>
+            <div>#1</div>
+        </div>
+
+        <div class="global-value-props__prop col--12--mob col--3--tblt">
+            <div class="global-value-props__prop__image col--1--mbl col--12--tblt">
+                {% render 'svg', name: 'heart' %}
+            </div>
+            
+            <div class="global-value-props__prop__header">Value Proposition</div>
+            <div>#2</div>
+    
+        </div>
+
+        <div class="global-value-props__prop col--12--mob col--3--tblt">
+            <div class="global-value-props__prop__image col--1--mbl col--12--tblt">
+                {% render 'svg', name: 'heart' %}
+            </div>
+            <div class="global-value-props__prop__header">Value Proposition</div>
+            <div>#3</div>
+    
+        </div>
+
+        <div class="global-value-props__prop col--12--mob col--3--tblt">
+            <div class="global-value-props__prop__image col--1--mbl col--12--tblt">
+                {% render 'svg', name: 'heart' %}
+            </div>
+            <div class="global-value-props__prop__header">Value Proposition</div>
+            <div>#4</div>
+        </div>
+       
+    </div>
+  </section>
+  
+
+
+<footer class="global-footer bg--primary--dark color--white">
+    <div class="global-footer__inner"> 
+
+     <!-- Footer Logo -->
+    <div class="global-footer__image container--l gutters">
+    </div>
+
+    <div class="global-footer__inner-grid flex flex--justify-between container--l">
+        
+        <!-- Footer Text -->
+        {%- if section.settings.footer-text -%}
+        <div class="show-only--dsktp col--4--dsktp"> 
+            <div class="global-footer__description">
+                {{section.settings.footer-text}}
+            </div>
+        </div>
+        {%- endif -%}
+
+        <!-- Linklists -->
+        <div class="global-footer__links col--12--mbl col--6--tblt col--4--dsktp">
+                <ul class="flex padding-none">
+                    {% for link in linklists[primaryMenu].links %}
+                    <!-- First Level Links-->
+                    <li class="col--6--mbl col--6--tblt b">
+                        <a class="display--inline-block global-footer__links-title no-u" href="{{ link.url }}">{{ link.title }}</a>
+
+                        <!-- Second Level Links -->
+                        {% if link.links != blank %}
+                        <ul class="child">
+                            {% for child_link in link.links %}  
+                            <li class="no-b type--button capitalize color--primary--lighter"><a class="no-u" href= "{{ child_link.url }}">{{ child_link.title }}</a>
+                            {% if child_link.links != blank %}
+                            <ul class="grandchild">
+                            {% for grandchild_link in child_link.links %}  
+                                <li class="no-b"><a class="no-u" href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                            {% endif %}   
+                            </li>
+                            {% endfor %}
+                        </ul> 
+                        {% endif %}
+                    
+                    </li>
+                    {% endfor %}
+                </ul>
+        </div> 
+    
+        <!--Newsletter Sign-up and Social Icons -->
+        <div class="global-footer__newsletter col--6--tblt col--4--dsktp">      
+            <div class="global-footer__newsletter-heading type--m">{{ section.settings.newsletter-header }}</div>
+
+            <div class="global-footer__newsletter-message color--primary--lighter">
+                {{ section.settings.newsletter-message }}
+            </div>
+                              
+            <div class="global-footer__newsletter-signup">
+                <div class="email-sign-up">
+                {% form 'customer', class: "footer-form" %}
+                {{ form.errors | default_errors }}
+                    {% if form.posted_successfully? %}
+                    <p class="success">{{ settings.newsletter-success }}</p>
+                    {% else %}
+        
+                        <span class="text-input">
+                            <span class="text-input__icon">{% render 'svg', name: 'email' %}</span>    
+                            <label for="footer-email-input" class="text-input__label color--black--50">Email</label>
+                            <input id="footer-email-input" class="text-input__input color--black" type="text" name="contact[email]"/>
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                        </span>
+                    {% endif %}
+                {% endform %}
+                </div>
+            </div> 
+
+            <div class="global-footer__social-media-icons">
+                {% if settings.instagram != blank %}
+                    <a href="{{ settings.instagram }}" target="_blank" class="global-footer__social-media-icon clickable--icon no-style">{% render 'svg', name: 'instagram' %}</a>
+                {% endif %}
+                {% if settings.facebook != blank %}
+                    <a href="{{ settings.facebook  }}" target="_blank" class="global-footer__social-media-icon clickable--icon no-style">{% render 'svg', name: 'facebook' %}</a>
+                {% endif %}
+                {% if settings.pinterest != blank %}
+                    <a href="{{ settings.pinterest }}" target="_blank" class="global-footer__social-media-icon clickable--icon no-style">{% render 'svg', name: 'pinterest'%}</a>
+                {% endif %}
+                {% if settings.twitter != blank %}
+                    <a href="{{ settings.twitter }}" target="_blank" class="global-footer__social-media-icon clickable--icon no-style">{% render 'svg', name: 'twitter'  %}</a>
+                {% endif %}
+            </div>     
+        </div> 
+    </div><!-- end of global footer inner -->
+
+    <!-- sub footer -->
+    <div class="global-footer__subfooter bg--primary--darkest" >
+        <div class="global-footer__subfooter-inner container--l flex flex--justify-between flex--align-center gutters">
+            <div class="type--xs color--primary--lightest">© {{ "now" | date: "%Y" }} All Rights Reserved</div>
+
+
+            <ul class="flex flex--justify-between padding-none">
+            {% for link in linklists[subMenu].links %}
+                <li class="gutter--left color--primary">
+                    <a href="{{ link.url }}" class="type--cta no-u">{{ link.title }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+    </div>
+</footer>
+
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "id": "footer-image",
+      "type": "image_picker",
+      "label": "Footer Logo"
+    },
+    {
+      "id": "footer-text",
+      "type": "richtext",
+      "label": "Footer Text"
+    },
+    {
+        "id": "newsletter-header",
+        "type": "text",
+        "label": "Email Signup Title"
+    },
+    {
+        "id": "newsletter-message",
+        "type": "richtext",
+        "label": "Email Signup Message"
+    },
+    {
+        "id": "primary-menu",
+        "type": "link_list",
+        "label": "Primary Menu"
+    },
+    {
+        "id": "sub-menu",
+        "type": "link_list",
+        "label": "Subfooter Menu"
+    }
+  ]
+}
+{% endschema %}

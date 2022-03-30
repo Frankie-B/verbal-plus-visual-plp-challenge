@@ -1,0 +1,142 @@
+.global-value-props {
+  &__wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    @media screen and (min-width: $break--dsktp) {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__prop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: $break--tblt) {
+      display: unset;
+      margin-bottom:unset;
+    }
+
+    &__image {
+      margin-right: 40px;
+      @media screen and (min-width: $break--tblt) {
+       margin-right: 0;
+      }
+    
+      & svg {
+        width: 60px;
+      }
+    }
+  }
+}
+
+
+.global-footer {
+  position: relative;
+  width: 100%;
+
+  & ul {
+    list-style: none;
+  }
+
+  &__inner {
+    padding-top: 32px;
+
+    @media screen and (min-width: $break--tblt) {
+      padding-top: 52px;
+    }
+
+    @media screen and (min-width: $break--dsktp) {
+      padding-top: 65px;
+    }
+
+    &-grid {
+      padding-bottom: 50px;
+
+      @media screen and (min-width: $break--tblt) {
+        padding-bottom: 80px;
+      }
+
+      @media screen and (min-width: $break--dsktp) {
+       padding: 19px $gutter--dsktp 115px $gutter--dsktp;
+      }
+    }
+  }
+
+  &__image {
+    display: none;
+
+    @media screen and (min-width: $break--dsktp) {
+     display: block;
+     }
+  }
+
+  &__links {
+    &-title {
+      margin-bottom: 18px;
+    }
+  }
+
+  &__description {
+    max-width: 275px;
+  }
+
+  &__newsletter {
+    padding: 80px 0 50px 0;
+
+    @media screen and (min-width: $break--tblt) {
+      padding: 0;
+    }
+
+    &-message {
+      padding: 18px 0 20px 0;
+    }
+  }
+
+  &__social-media-icons {
+    padding-top: 20px;
+  }
+
+  &__social-media-icon {
+    height: 48px;
+    width: 48px;
+    position: relative;
+
+    &:hover {
+      background-color: $color--primary--darkest;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      g {
+        fill: $color--primary--lightest;
+      }
+    }
+  }
+
+  &__newsletter {
+    &-signup {
+      .contact-form {
+        position: relative;      
+        width: 100%;
+      }
+    }
+  }
+
+  &__subfooter {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+}
+
+
+
+

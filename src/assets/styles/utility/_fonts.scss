@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Maison Neue";
+  font-style: normal;
+  font-weight: 400;
+  src: url("{{ 'MaisonNeue-Medium.otf' | asset_url }}") format("opentype");
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Maison Neue";
+  font-style: normal;
+  font-weight: 700;
+  src: url("{{ 'MaisonNeue-Bold.otf' | asset_url }}") format("opentype");
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Apercu";
+  font-style: normal;
+  font-weight: 400;
+  src: url("{{ 'apercu-regular.ttf' | asset_url }}") format("truetype");
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Apercu";
+  font-style: italic;
+  font-weight: 400;
+  src: url("{{ 'apercu-italic.ttf' | asset_url }}") format("truetype");
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Apercu";
+  font-style: normal;
+  font-weight: 700;
+  src: url("{{ 'apercu-bold.ttf' | asset_url }}") format("truetype");
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Apercu";
+  font-style: italic;
+  font-weight: 700;
+  src: url("{{ 'apercu-bold-italic.ttf' | asset_url }}") format("truetype");
+  text-rendering: optimizeLegibility;
+}

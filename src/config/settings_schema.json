@@ -1,0 +1,85 @@
+[
+	{
+		"name": "theme_info",
+		"theme_name": "V+V Base",
+		"theme_version": "2.0",
+		"theme_author": "V+V",
+		"theme_documentation_url": "https://github.com/verbalplusvisual/vpv-shopify-base-theme",
+		"theme_support_url": "https://github.com/verbalplusvisual/vpv-shopify-base-theme"
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "url",
+        "id": "instagram",
+        "label": "Instagram Link"
+      },
+      {
+        "type": "url",
+        "id": "twitter",
+        "label": "Twitter Link"
+      },
+      {
+        "type": "url",
+        "id": "facebook",
+        "label": "Facebook Link"
+      },
+      {
+        "type": "url",
+        "id": "youtube",
+        "label": "YouTube Link"
+      },
+      {
+        "type": "url",
+        "id": "pinterest",
+        "label": "Pinterest Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Default Social Sharing Image"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "range",
+        "id": "free_shipping",
+        "min": 0,
+        "max": 1000,
+        "step": 10,
+        "label": "Free Shipping Threshold in $",
+        "default": 150
+      },
+      {
+        "id": "empty_cart_cta_text",
+        "type": "text",
+        "label": "Empty Cart CTA Text"
+      }
+    ]
+  },
+  {
+    "name": "Collection and Search Pages",
+    "settings": [
+      {
+        "type": "select",
+        "id": "product_list_pagination",
+        "label": "Product List Pagination",
+        "options": [
+          {
+            "value": "numbers",
+            "label": "Page Numbers"
+          },
+          {
+            "value": "load_more",
+            "label": "Load More Button"
+          }
+        ],
+        "default": "numbers"
+      }
+    ]
+  }
+]

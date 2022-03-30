@@ -1,0 +1,27 @@
+.layout {
+  background-color: $color--primary;
+
+  .template {
+    min-height: 100vh;
+    padding-top: 90px;
+    background-color: $color--white;
+
+    @media screen and (min-width: $break--dsktp) {
+      padding-top: 110px;
+    }
+
+    &.promo-hidden {
+      padding-top: 60px;
+
+      @media screen and (min-width: $break--dsktp) {
+        padding-top: 80px;
+      }
+    }
+  }
+}
+
+[v-cloak] {
+  visbility: hidden;
+  opacity: 0;
+  transition: visiblity $base-transition, opacity $base-transition;
+}
