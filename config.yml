@@ -1,6 +1,6 @@
 theme:
-  password: FROM_SHOPIFY_EMAIL
-  theme_id: "FROM_VPV_EMAIL"
+  password: shptka_93a7c10fa20e703af4ad52bcb26ec965
+  theme_id: 129333330106
   store: vpv-code-challenge.myshopify.com
   ignore_files:
     - settings_data.json
