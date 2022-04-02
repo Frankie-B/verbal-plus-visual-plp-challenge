@@ -1,7 +1,16 @@
-import '../theme';
+import React from 'react';
 import getAllProducts from '../graphql/collection-starter-code';
+import '../theme';
 
 
-// getAllProducts('test-collection') => returns a Promise, which resolves to an Array of Product Objects
+const Collection = () => {
 
-// Your Code Here
+  // TODO: Get products from getAllProducts funciton
+  console.log(getAllProducts);
+
+  return (
+    <div className="Collection">This is a test!!</div>
+  )
+}
+
+export default Collection;
