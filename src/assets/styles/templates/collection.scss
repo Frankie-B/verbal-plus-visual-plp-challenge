@@ -1,1 +1,73 @@
 // your code here
+.Collection {
+  // display: flex;
+  // justify-content: center;
+  // box-sizing: border-box;
+  width: 100%;
+
+  .wrapper {
+    margin: 0 auto;
+    padding: 0 1rem;
+    width: 50%;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 70%;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+  .product_container {
+    // display: flex;
+    // justify-content: space-around;
+    margin: 20px;
+  }
+
+  .image_container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    height: 409px;
+    width: 349px;
+    .product_image {
+      justify-self: center;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  .details_container {
+    text-align: center;
+  }
+
+  .product_title {
+    font-size: 1.1rem;
+    width: fit-content;
+    margin: 8px auto;
+  }
+
+  .price_copy {
+  }
+
+  .swatch_container {
+    margin: 32px auto;
+    width: 80%;
+
+    .color {
+      border-radius: 50%;
+      background-color: #bbb;
+      display: inline-block;
+      height: 35px;
+      width: 35px;
+    }
+  }
+}
