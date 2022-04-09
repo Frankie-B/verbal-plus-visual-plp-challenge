@@ -27,45 +27,34 @@ const Collection = () => {
         return () => {
             mounted = false;
         }
-    }, [])
-
-    // console.log(products);
-
-    // create an array of all the prod
-    // const collection = products
-    //     .filter(product => product.title !== null) // filter for only the t-shirts
-    //     .flatMap(product => product.variants.map(variant => [variant, variant.image.src, variant.price]));
-
-    /* Create an aray of unique products from the collecion*/
-    // const itemExists = new Set();
-    // const uniqueProducts = products.filter(el => {
-    //     const duplicate = itemExists.has(el.variants.image);
-    //
-    //     itemExists.add(el.variants.image);
-    //     return !duplicate;
-    // });
+    }, []);
 
     console.log(products);
 
     const collection = products.map((product, index) => {
+
         const variants = product.variants.map((variant, index) => {
             if (index % 4 === 0) return variant;
         });
 
         const title = product.title;
 
-        // console.log(title);
-        // console.log(product.options[0].values);
+        const Blue = '#00BCD3'
+        const red = '#EF5350'
+        const gold = '#FEC109'
+        const brown = '#AF806E'
+        const mediumGrey = '#CDCDCD'
+        const navy = '#2F3676'
+        const yellow = '#FEC109'
+        const darkWash = '#2F3676'
+        const lightWash = '#00BCD3'
 
-        // const colorOptions = product.options[0].name;
-
-        const colorOptions = product.options.map((option,index) => {
+        const colorOptions = product.options.map((option, index) => {
             if (option.name === 'Color') {
-                console.log(option)
+                //
             }
         })
-
-        console.log(colorOptions)
+        // console.log(colorOptions)
 
         return (
             <div className="product_card column" key={index}>
