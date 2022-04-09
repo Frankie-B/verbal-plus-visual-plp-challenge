@@ -1,28 +1,25 @@
 // your code here
 .Collection {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /*fraction*/
   margin: 0 auto;
-  width: 50%;
+  width: 80%;
+
+  .product_card {
+    display: flex;
+    margin: 0 auto;
+  }
+
   .row {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    width: 60%;
   }
 
   .column {
-    display: flex;
     flex-direction: column;
-    flex-basis: calc(100%/3);
-    flex: 1;
-  }
-
-  .product_card {
-    margin-bottom: 16px;
-    text-align: center;
-    width: 249px;
+    flex: 33.33%;
   }
 
   .img_container {
@@ -42,7 +39,6 @@
   .product_title {
     font-size: 0.8rem;
     margin: 8px auto;
-    width: 80%;
   }
 
   .price {
@@ -64,5 +60,11 @@
     display: inline-block;
     height: 20px;
     width: 20px;
+  }
+}
+
+@media (max-width: 768px) { /*breakpoint*/
+  .Collection {
+    grid-template-columns: none;
   }
 }

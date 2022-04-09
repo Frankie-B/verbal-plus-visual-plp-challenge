@@ -50,15 +50,19 @@ const Collection = () => {
         const lightWash = '#00BCD3'
 
         const colorOptions = product.options.map((option, index) => {
-            if (option.name === 'Color') {
-                //
+            const hasColorOption = option.name === 'Color'
+            console.log(hasColorOption)
+            if (hasColorOption) {
+                option.values.forEach((color) => {
+                    return `<button className="color"></button>`
+                })
             }
-        })
+        });
         // console.log(colorOptions)
 
         return (
-            <div className="product_card column" key={index}>
-                <div className="product">
+            <div className="product_card " key={index}>
+                <div className="product column">
                     <div className="img_container">
                         <img src={variants[0].image.src} alt="" className="product_img"/>
                     </div>
@@ -66,12 +70,7 @@ const Collection = () => {
                         <h3 className="product_title">{title}</h3>
                         <p className="price">{variants[0].price}</p>
                         <div className="color_container row">
-                            <span className="color"></span>
-                            <span className="color"></span>
-                            <span className="color"></span>
-                            <span className="color"></span>
-                            <span className="color"></span>
-                            <span className="color"></span>
+                            {colorOptions}
                         </div>
                     </div>
                 </div>
