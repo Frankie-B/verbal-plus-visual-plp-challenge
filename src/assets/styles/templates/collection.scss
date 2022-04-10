@@ -3,11 +3,23 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; /*fraction*/
   margin: 0 auto;
+  overflow: hidden;
   width: 80%;
 
   .product_card {
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
+  }
+
+  .product {
+    display: flex;
+    overflow: hidden;
+
+
+    &:not(:first-child) .img_container {
+      visibility: hidden;
+    }
   }
 
   .row {
@@ -15,20 +27,24 @@
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    overflow: hidden;
   }
 
-  .column {
-    flex-direction: column;
-    flex: 33.33%;
-  }
+  //.img_container {
+  //  //display: flex;
+  //  //flex-wrap: wrap;
+  //  //overflow: hidden;
+  //
+  //
+  //  .product_img {
+  //    height: 309px;
+  //    width: 249px;;
+  //  }
+  //}
 
-  .img_container {
+  .product_img {
     height: 309px;
     width: 249px;
-    .product_img {
-      justify-self: center;
-      width: 100%;
-    }
   }
 
   .details_container {
@@ -52,7 +68,7 @@
 
   .color {
     border-radius: 50%;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     border: 2px solid #aaa;
     cursor: pointer;
 
@@ -67,4 +83,16 @@
   .Collection {
     grid-template-columns: none;
   }
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.debug {
+  border: 1px solid red;
 }

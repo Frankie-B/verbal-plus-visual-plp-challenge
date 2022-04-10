@@ -6,6 +6,7 @@ import {unique} from "webpack-merge";
 
 const Collection = () => {
     const [products, setProducts] = useState([]);
+    // const [imageSrc, setImageSrc] = useState(false);
 
     /** : Resolve the getAllProducts function in a hook, useEffect is good for this, to avoid a scenario of
      * the page infinitely rendering/calling the function
@@ -39,33 +40,51 @@ const Collection = () => {
 
                 /** The returned data contained duplicates, using Set,
                  * filter out duplicates to remain with
-                 * only unique varaints
+                 * only unique items
                  * **/
-                const found = new Set();
 
-                const variants = product.variants.filter((el, index, self) => {
+                const found = new Set();
+                const uniqueProduct = product.variants.filter((el) => {
                     const isDuplicate = found.has(el.image.src);
                     found.add(el.image.src);
                     return !isDuplicate;
                 });
 
+                // console.log('Filtered uniqueProduct with no duplicates: \n', uniqueProduct);
 
-                console.log(variants)
+                /** create a component for default(first image in product list) image**/
 
+                const defaultProductImg = uniqueProduct.map((el, index) => {
+                    // console.log('Image source: \n', el, index)
+                    if (index === 0) {
+                        let defaultImage = el.image.src
+                        return (
+                            <img className="product_img" src={defaultImage} alt="product image" key={el.id}/>
+                        )
+                    }
+                })
+                // console.log(product.options[0]);
+                const colorOptions = product.options.map((option) => {
+                    if (option.name === 'Color') {
+                        return option.values
+                    }
+                });
 
+                const colors = colorOptions.filter((option) => option !== undefined)
+                const variantColor = colors.map((option) => option);
+
+                console.log(variantColor)
 
                 return (
-                    <div className="product_card " key={index}>
-                        <div className="product column">
-                            <div className="img_container">
-                                {/*<img src={uniqueVariants[0].image.src} alt="" className="product_img"/>*/}
-                            </div>
-                            <div className="details_container column">
-                                <h3 className="product_title">{title}</h3>
-                                {/*<p className="price">{uniqueVariants[0].price}</p>*/}
-                                <div className="color_container row">
-                                    {/*{colorBtn}*/}
-                                </div>
+                    <div className="product_card" key={index}>
+                        <div className="product row">
+                            {defaultProductImg}
+                        </div>
+                        <div className="details_container">
+                            <h3 className="product_title">{title}</h3>
+                            <p className="price">{uniqueProduct[0].price}</p>
+                            <div className="color_container row">
+                                {/**/}
                             </div>
                         </div>
                     </div>
