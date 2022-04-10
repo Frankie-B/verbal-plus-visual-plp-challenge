@@ -55,7 +55,6 @@ const Collection = () => {
                 /** create a component for default(first image in product list) image**/
 
                 const defaultProductImg = uniqueProduct.map((el, index) => {
-                    // console.log('Image source: \n', el, index)
                     if (index === 0) {
                         let defaultImage = el.image.src
                         return (
@@ -63,17 +62,19 @@ const Collection = () => {
                         )
                     }
                 })
-                // console.log(product.options[0]);
+
                 const colorOptions = product.options.map((option) => {
                     if (option.name === 'Color') {
                         return option.values
                     }
                 });
 
-                const colors = colorOptions.filter((option) => option !== undefined)
-                const variantColor = colors.map((option) => option);
+                const colors = colorOptions.filter((option) => {
+                    if (option !== undefined) return option;
+                })
 
-                console.log(variantColor)
+                /** blocked on dynamically rendering variant colors**/
+                // const variantColor = colors.map((option, index) => <div className="color" key={index}></div>);
 
                 return (
                     <div className="product_card" key={index}>
@@ -84,7 +85,7 @@ const Collection = () => {
                             <h3 className="product_title">{title}</h3>
                             <p className="price">{uniqueProduct[0].price}</p>
                             <div className="color_container row">
-                                {/**/}
+                                {/*{variantColor}*/} {/* TODO: create swatch and functionality*/}
                             </div>
                         </div>
                     </div>

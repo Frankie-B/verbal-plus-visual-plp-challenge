@@ -9,5 +9,20 @@
     - Solution:  Taking ownership of the folder that Node was installed to with:
   
     ```bash $ sudo chown -R [myusername]:[myusername] /home/[myusername]/.nvm`
+  - 
+  
+    a. Product Image - done
+    b. Product Title - done
+    c. Variant Price - done
+  
+    d. Product Swatches
+    i. The product card should display a swatch for each color option
+    ii. When a user clicks on a swatch, that product card should
+    dynamically update:
+1. The image associated with that variant
+2. The selected swatch
+   iii. The product card should default to displaying the information for the first variant returned for that specific product data. 
+
+
 
 
