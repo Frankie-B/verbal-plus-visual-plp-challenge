@@ -7,12 +7,13 @@ import {unique} from "webpack-merge";
 const Collection = () => {
     const [products, setProducts] = useState([]);
 
-    /* Resolve the getAllProducts function in a hook, useEffect is good for this, to avoid a scenario of the page infinitely
-    rendering/calling the function */
+    /** : Resolve the getAllProducts function in a hook, useEffect is good for this, to avoid a scenario of
+     * the page infinitely rendering/calling the function
+     * **/
     useEffect(() => {
         let mounted = true
 
-        /** Async function to retrieve the data from the getAllProducts Fn and return its value */
+        /** : Async function to retrieve the data from the getAllProducts Fn and return its value **/
         async function fetchProducts() {
             try {
                 const result = await getAllProducts('test-collection');
@@ -29,54 +30,49 @@ const Collection = () => {
         }
     }, []);
 
-    console.log(products);
-
     const collection = products.map((product, index) => {
+                const blue = '#00BCD3', red = '#EF5350', gold = '#FEC109',
+                    brown = '#AF806E', mediumGrey = '#CDCDCD', navy = '#2F3676',
+                    yellow = '#FEC109', darkWash = '#2F3676', lightWash = '#00BCD3';
 
-        const variants = product.variants.map((variant, index) => {
-            if (index % 4 === 0) return variant;
-        });
+                const title = product.title;
 
-        const title = product.title;
+                /** The returned data contained duplicates, using Set,
+                 * filter out duplicates to remain with
+                 * only unique varaints
+                 * **/
+                const found = new Set();
 
-        const Blue = '#00BCD3'
-        const red = '#EF5350'
-        const gold = '#FEC109'
-        const brown = '#AF806E'
-        const mediumGrey = '#CDCDCD'
-        const navy = '#2F3676'
-        const yellow = '#FEC109'
-        const darkWash = '#2F3676'
-        const lightWash = '#00BCD3'
+                const variants = product.variants.filter((el, index, self) => {
+                    const isDuplicate = found.has(el.image.src);
+                    found.add(el.image.src);
+                    return !isDuplicate;
+                });
 
-        const colorOptions = product.options.map((option, index) => {
-            const hasColorOption = option.name === 'Color'
-            console.log(hasColorOption)
-            if (hasColorOption) {
-                option.values.forEach((color) => {
-                    return `<button className="color"></button>`
-                })
-            }
-        });
-        // console.log(colorOptions)
 
-        return (
-            <div className="product_card " key={index}>
-                <div className="product column">
-                    <div className="img_container">
-                        <img src={variants[0].image.src} alt="" className="product_img"/>
-                    </div>
-                    <div className="details_container column">
-                        <h3 className="product_title">{title}</h3>
-                        <p className="price">{variants[0].price}</p>
-                        <div className="color_container row">
-                            {colorOptions}
+                console.log(variants)
+
+
+
+                return (
+                    <div className="product_card " key={index}>
+                        <div className="product column">
+                            <div className="img_container">
+                                {/*<img src={uniqueVariants[0].image.src} alt="" className="product_img"/>*/}
+                            </div>
+                            <div className="details_container column">
+                                <h3 className="product_title">{title}</h3>
+                                {/*<p className="price">{uniqueVariants[0].price}</p>*/}
+                                <div className="color_container row">
+                                    {/*{colorBtn}*/}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                )
+            }
         )
-    });
+    ;
 
     return (
         <div className="Collection">
