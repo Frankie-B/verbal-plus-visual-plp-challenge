@@ -16,7 +16,6 @@
     display: flex;
     overflow: hidden;
 
-
     &:not(:first-child) .img_container {
       visibility: hidden;
     }
@@ -29,18 +28,6 @@
     flex-wrap: wrap;
     overflow: hidden;
   }
-
-  //.img_container {
-  //  //display: flex;
-  //  //flex-wrap: wrap;
-  //  //overflow: hidden;
-  //
-  //
-  //  .product_img {
-  //    height: 309px;
-  //    width: 249px;;
-  //  }
-  //}
 
   .product_img {
     height: 309px;
@@ -79,7 +66,7 @@
   }
 }
 
-@media (max-width: 768px) { /*breakpoint*/
+@media (max-width: 768px) {
   .Collection {
     grid-template-columns: none;
   }
